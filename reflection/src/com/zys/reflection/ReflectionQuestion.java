@@ -1,4 +1,4 @@
-package com.zys;
+package com.zys.reflection;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,6 +6,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+/**
+ * 反射的基本操作实例
+ *
+ */
 public class ReflectionQuestion {
 
     //通过配置文件，使用反射机制生成对象并调用方法
