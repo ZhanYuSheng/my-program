@@ -1,5 +1,7 @@
 package com.zys.reflection;
 
+import com.zys.bean.Cat;
+
 /**
  *
  * 内容来自B站视频“【韩顺平将Java】Java反射专题-反射 反射机制 类加载 reflection Class 类结构 等”; BV = "BV1g84y1F7df" P6
@@ -13,7 +15,24 @@ package com.zys.reflection;
  */
 public class Class_ {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+        /*
+         通过debug模式发现，new Cat();首先会调用 ClassLoader类的loadClass(String name)
+         public Class<?> loadClass(String name) throws ClassNotFoundException {
+            return loadClass(name, false);
+         }
+        */
+        Cat cat = new Cat();
+
+        /*
+            仍然是调用ClassLoader类的loadClass(String name)，
+            一个Class只能被加载一次，如果先执行了上面的new Cat();则Class.forName()时不会调用loadClass方法
+        */
+        Class cls1 = Class.forName("com.zys.bean.Cat");
+        Class cls2 = Class.forName("com.zys.bean.Cat");
+
+        System.out.println("cls1.hashCode = " + cls1.hashCode() + "| cls2.hashCode = " + cls2.hashCode());
     }
 
 }
