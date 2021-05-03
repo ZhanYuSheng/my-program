@@ -9,8 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld.HelloWorld,
-      meta: { hidden: true,title:"嗯"}
+      component: HelloWorld
     }
   ]
 })
