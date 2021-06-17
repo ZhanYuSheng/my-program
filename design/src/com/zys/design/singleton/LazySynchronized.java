@@ -6,7 +6,8 @@ package com.zys.design.singleton;
  */
 public class LazySynchronized {
 
-    public static LazySynchronized instance = null;
+    //volatile关键字在这里是为了防止指令重排
+    public volatile static LazySynchronized instance = null;
 
     private LazySynchronized(){
     }
