@@ -1,30 +1,67 @@
 package com.zys;
 
-import java.io.RandomAccessFile;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
 
 public class Demo {
 
     public static void main(String[] args) {
-        RandomAccessFile
+
+        ProvinceEnum provinceEnum = ProvinceEnum.fromValue("731");
+
+        System.out.println(provinceEnum);
+
+        A a = new A();
+        setA(a);
+        System.out.println(a);
+
+        String str = "456";
+        changeStr(str);
+        System.out.println(str);
     }
 
+    private static void changeStr(String str){
+        str = "123";
+    }
 
-    public boolean startsWith(String prefix, int toffset) {
-        char ta[] = value;
-        int to = toffset;
-        char pa[] = prefix.value;
-        int po = 0;
-        int pc = prefix.value.length;
-        // Note: toffset might be near -1>>>1.
-        if ((toffset < 0) || (toffset > value.length - pc)) {
-            return false;
+    private static void setA(A a){
+        a.setName("张三");
+        a.setAge("1111");
+        changeA(a);
+    }
+
+    private static void changeA(A a){
+        a.setName("李四");
+        a.setAge("2222");
+    }
+
+    static class A {
+        private String name;
+        private String age;
+
+        public String getName() {
+            return name;
         }
-        while (--pc >= 0) {
-            if (ta[to++] != pa[po++]) {
-                return false;
-            }
+
+        public void setName(String name) {
+            this.name = name;
         }
-        return true;
+
+        public String getAge() {
+            return age;
+        }
+
+        public void setAge(String age) {
+            this.age = age;
+        }
+
+        @Override
+        public String toString() {
+            return "A{" +
+                    "name='" + name + '\'' +
+                    ", age='" + age + '\'' +
+                    '}';
+        }
     }
 
 }
